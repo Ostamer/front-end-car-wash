@@ -16,6 +16,7 @@ const RegistrationForm = () => {
   const handleLogin = () => {
     // Здесь можно добавить логику проверки данных, если нужно
     navigate('/hello'); // Перенаправление на страницу HelloWindow
+    navigate('/window');
   };
 
   return (
@@ -50,7 +51,7 @@ const RegistrationForm = () => {
         </div>
         <div className="text-right">
           <button
-            onClick={() => alert("Переход к восстановлению пароля")}
+            onClick={handleLogin}
             className="text-blue-500 text-sm bg-transparent border-0 cursor-pointer"
             style={{ textDecoration: 'none' }}
           >

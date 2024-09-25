@@ -12,7 +12,7 @@ const AppScreen = () => {
       <div 
         className="flex-grow relative bg-gray-blue flex flex-col items-center overflow-hidden rounded-b-3xl" 
         style={{ 
-          height: '70vh', // Высота 75% от экрана
+          height: '65vh', // Высота 75% от экрана
           backgroundImage: `url(${carImage})`,
           backgroundSize: 'cover', 
           backgroundPosition: 'center',
@@ -39,7 +39,7 @@ const AppScreen = () => {
       </div>
 
       {/* Блок с кнопками (25% экрана) */}
-      <div className="flex-shrink-0 flex flex-col justify-center items-center w-full p-4" style={{ height: '27vh' }}>
+      <div className="flex-shrink-0 flex flex-col justify-center items-center w-full p-4" style={{ height: '30vh' }}>
         <RecordButton />
         <GarageButton />
       </div>
