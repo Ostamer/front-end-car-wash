@@ -16,7 +16,6 @@ const RegistrationForm = () => {
   const handleLogin = () => {
     // Здесь можно добавить логику проверки данных, если нужно
     navigate('/hello'); // Перенаправление на страницу HelloWindow
-    navigate('/window');
   };
 
   return (
