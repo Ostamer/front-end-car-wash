@@ -1,38 +1,3 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Button from './RenderContent';
-import GarageScreen from './Screens/GarageScreen';
-
-
-const SecondModalWindow = ({ buttons, onClose }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isNextModalOpen, setIsNextModalOpen] = useState(false);
-  const [nextModalButtons, setNextModalButtons] = useState([]); 
-  const [isWelcomeVisible, setIsWelcomeVisible] = useState(true);
-
-  const minHeight = 30;
-  const maxHeight = 70;
-
-  const handleDragEnd = (event, info) => {
-    const { offset } = info;
-    if (offset.y < -100) {
-      setIsOpen(true);
-    } else if (offset.y > 100) {
-      setIsOpen(false);
-    }
-  };
-
-  const handleCloseWelcome = () => {
-    setIsWelcomeVisible(false);
-    setIsOpen(true);
-  };
-
-  const openNextModal = (newButtons) => {
-    setNextModalButtons(newButtons);
-    setIsNextModalOpen(true);
-    setIsOpen(false);
-  };
-
   const closeNextModal = () => {
     setIsNextModalOpen(false);
     setIsOpen(true);

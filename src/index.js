@@ -7,12 +7,10 @@ import { initMiniApp, mockTelegramEnv, parseInitData } from '@telegram-apps/sdk'
 //
 const initializeTelegramSDK = async () => {
   try {
-    // Попытка инициализировать настоящее окружение Telegram
     console.log("Инициализация окружения Telegram");
     const [miniApp] = initMiniApp();
     await miniApp.ready();
   } catch (error) {
-    // В случае ошибки инициализируем фейковое окружение
     console.error('Ошибка при инициализации Telegram:', error);
 
     const initDataRaw = new URLSearchParams([
@@ -58,9 +56,7 @@ const initializeTelegramSDK = async () => {
   }
 };
 
-// Инициализация SDK
 initializeTelegramSDK();
-//
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import carImage from '../images/car.png'; 
-import logoImage from '../images/logo.jpg'; 
+import carImage from '../../images/car.png'; 
+import logoImage from '../../images/logo.jpg'; 
 import { useNavigate } from 'react-router-dom';
-import thing from '../images/hina.png';
+import thing from '../../images/hina.png';
 
 const RegistrationForm = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
-  const navigate = useNavigate(); // Создайте навигацию
+  const navigate = useNavigate(); 
 
 
   const toggleTheme = () => {
@@ -14,23 +14,24 @@ const RegistrationForm = () => {
   };
 
   const handleLogin = () => {
-    // Здесь можно добавить логику проверки данных, если нужно
-    navigate('/hello'); // Перенаправление на страницу HelloWindow
+    navigate('/hello'); 
   };
+
+  const handleRegistration = () => {
+    navigate('/reg')
+  }
 
   return (
     <div className={`relative min-h-screen ${isDarkTheme ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} p-4 flex flex-col`}>
-      {/* Logo and Title */}
       <div className="space-y-2 relative z-10 mb-5 text-left">
         <div className="flex justify-between items-center">
           <img src={logoImage} alt="15TH Logo" className="h-10 w-10 rounded-lg" />
-          <p className="text-sm text-blue-500">Регистрация</p>
+          <button onClick={handleRegistration} className="text-sm text-blue-500">Регистрация</button>
         </div>
         <h1 className="text-3xl font-bold text-blue-600">Авторизация</h1>
         <p className="text-2xl">в 15TH App!</p>
       </div>
 
-      {/* Form Section */}
       <div className="space-y-4 relative z-10 mb-5">
         <div>
           <label className="block text-gray-500">E-mail</label>
@@ -50,7 +51,6 @@ const RegistrationForm = () => {
         </div>
         <div className="text-right">
           <button
-            onClick={handleLogin}
             className="text-blue-500 text-sm bg-transparent border-0 cursor-pointer"
             style={{ textDecoration: 'none' }}
           >
@@ -59,7 +59,6 @@ const RegistrationForm = () => {
         </div>
       </div>
 
-      {/* Button Section */}
       <div className="flex-grow flex flex-col justify-center items-center relative">
         <div className="fixed left-0 w-3/4 flex justify-start ">
           <img src={carImage} className="w-full h-auto max-w-full" alt="car" />
