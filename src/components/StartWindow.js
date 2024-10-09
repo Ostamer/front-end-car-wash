@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <div className="relative h-screen">
-      <MapView position={position}/>
+      {/* <MapView position={position}/> */}
       <ModalWindow Content={content}/> 
     </div>
   );
