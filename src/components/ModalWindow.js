@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import RenderContent from './RenderContent';
-import RenderTitle from './RenderTitles';
+// import RenderTitle from './RenderTitles';
 import WelcomeScreen from './Screens/GarageScreen';
 
 const ModalWindow = ({ Content, onClose}) => {
@@ -80,9 +80,9 @@ const ModalWindow = ({ Content, onClose}) => {
           Закрыть
         </button>
 
-        <div className="flex justify-between items-center mb-4">
+        {/* <div className="flex justify-between items-center mb-4">
           <RenderTitle componentName={Title} />
-        </div>
+        </div> */}
 
         <div className="space-y-4">
           <RenderContent contentName={Content} onOpenNewModal={openNextModal} />
