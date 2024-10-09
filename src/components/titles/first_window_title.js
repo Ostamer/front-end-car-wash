@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 const InfoAboutCar = () => {
     return (
     <div className="w-full text-black py-4 text-lg mb-4 flex items-center justify-between px-4">

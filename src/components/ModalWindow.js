@@ -54,7 +54,7 @@ const ModalWindow = ({ Content, onClose}) => {
     <>
       {isInfoScreenVisible && <WelcomeScreen onClose={handleCloseInfoScreen} />}
 
-      <RenderContent contentName={"ProfileContent"} onOpenNewModal={openNextModal} />
+      {/* <RenderContent contentName={"ProfileContent"} onOpenNewModal={openNextModal} /> */}
 
       <motion.div
         className={`fixed bottom-0 left-0 right-0 bg-gray-100 shadow-lg rounded-t-3xl p-4 ${isNextModalOpen ? 'z-9' : 'z-10'}`} 
