@@ -19,7 +19,6 @@ const RecordContent = ({ onOpenNewModal }) => {
   return (
     <div>
       <CarSelect /> 
-
       <button 
       onClick={() => onOpenNewModal(RecordTypeContent, RecordTypeTitle)}
       className="w-full bg-white text-black py-4 rounded-2xl text-lg mb-4 flex items-center justify-between px-4 shadow-xl hover:shadow-xl transition-shadow duration-300">

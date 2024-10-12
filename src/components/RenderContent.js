@@ -3,16 +3,17 @@ import React from 'react';
 const Button = ({ contentName, onOpenNewModal }) => {
   const components = {
     MainWindowContent: () => import('./Content/MainWindowContent'),
-    ProfileContent: () => import('./Content/user_button'),
-    GarageContent: () => import('./Content/client_garage_button'),
+    GarageContent: () => import('./Content/GarageContent'),
     RecordContent: () => import('./Content/RecordContent'),
     RecordTimeContent: () => import('./Content/RecordTimeContent'),
     RecordTypeContent: () => import('./Content/RecordTypeContent'),
     RecordAddTypeContent: () => import('./Content/RecordAddTypeContent'),
-    HistoryContent: () => import('./Content/user_history_button'),
-    CarInfo: () => import('./Content/car_redaction_button'),
-    UserProfile: () => import('./Content/ProfileContent'),
-    
+    HistoryContent: () => import('./Content/HistoryContent'),
+    CarRedactionContent: () => import('./Content/CarRedactionContent'),
+    ProfileContent: () => import('./Content/ProfileContent'),
+    RecordConfirmContent: () => import('./Content/RecordConfirmContent'),
+    VisitContent: () => import('./Content/VisitContent'),
+    ProfileInfoContent: () => import ('./Content/ProfileInfoContent')
   };
 
   const loadContent = components[contentName];
