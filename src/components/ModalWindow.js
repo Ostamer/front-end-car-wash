@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import RenderContent from './RenderContent';
-// import RenderTitle from './RenderTitles';
-import WelcomeScreen from './Screens/GarageScreen';
+import RenderTitle from './RenderTitles';
+import RenderScreen from './RenderScreens';
 
-const ModalWindow = ({ Content, onClose}) => {
-  const maxHeight = 80;
-  const Title = "Auto";
+const ModalWindow = ({ Content="", Title = "", Screen="", onClose}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isNextModalOpen, setIsNextModalOpen] = useState(false);
-  const [nextModalRender, setNextModalRender] = useState();
-  const [isInfoScreenVisible, setIsInfoScreenVisible] = useState(true);
+  const [nextModalContent, setNextModalContent] = useState();
+  const [nextModalTitle, setNextModalTitle] = useState();
+  const [nextModalScreen, setNextModalScreen] = useState();
+  const [isScreenVisible, setIsScreenVisible] = useState(!!Screen);
   const [dragOffset, setDragOffset] = useState(0); 
 
   const handleCloseInfoScreen = () => {
     setIsOpen(true);
-    setIsInfoScreenVisible(false);
+    setIsScreenVisible(false);
   };
 
-  const minHeight = 30; 
+  const maxHeight = 80;
 
   const handleDragEnd = (event, info) => {
     const { offset } = info;
@@ -32,10 +32,12 @@ const ModalWindow = ({ Content, onClose}) => {
     }
   };
 
-  const openNextModal = (newButtons) => {
-    setNextModalRender(newButtons);
+  const openNextModal = (newContent, newTitle="MainWindowTitle", newScreen="") => {
+    setNextModalContent(newContent);
+    setNextModalScreen(newScreen);
+    setNextModalTitle(newTitle);
     setIsNextModalOpen(true);
-    setIsOpen(true); 
+    setIsOpen(true);
   };
 
   const closeNextModal = () => {
@@ -48,19 +50,18 @@ const ModalWindow = ({ Content, onClose}) => {
     onClose(); 
   };
 
-  const previousModalVisibleHeight = isNextModalOpen ? maxHeight + 1 : maxHeight - 1;
 
   return (
     <>
-      {isInfoScreenVisible && <WelcomeScreen onClose={handleCloseInfoScreen} />}
+      {isScreenVisible && <RenderScreen componentName={Screen} onClose={handleCloseInfoScreen}/>}
 
-      {/* <RenderContent contentName={"ProfileContent"} onOpenNewModal={openNextModal} /> */}
-
+      <RenderContent contentName={"ProfileContent"} onOpenNewModal={openNextModal} />
+      
       <motion.div
         className={`fixed bottom-0 left-0 right-0 bg-gray-100 shadow-lg rounded-t-3xl p-4 ${isNextModalOpen ? 'z-9' : 'z-10'}`} 
         style={{ 
-          height: isOpen ? `${maxHeight}vh` : `${previousModalVisibleHeight}vh`, 
-          opacity: isNextModalOpen ? 0.7 : 1, 
+          height: `${maxHeight}vh`, 
+          opacity: isNextModalOpen ? 0.9 : 1, 
         }} 
         drag="y"
         dragConstraints={{ top: 0, bottom: 0 }}
@@ -68,21 +69,23 @@ const ModalWindow = ({ Content, onClose}) => {
         dragElastic={1}
         initial={{ y: "100%" }} 
         animate={{ 
-          y: isOpen ? `calc(100% - ${maxHeight}vh)` : `calc(100% - ${previousModalVisibleHeight}vh)`, 
+          y: isOpen ? `calc(100% - ${maxHeight}vh)` : `calc(100% - ${maxHeight}vh)`, 
         }} 
         exit={{ y: "100%", opacity: 0 }}
         transition={{ type: 'spring'}}
       >
+      {Content !== 'MainWindowContent' && Content !== 'RecordConfirmContent' && (
         <button
           className="absolute top-4 right-4 text-blue-500 py-2 px-4 rounded"
           onClick={closeWindow}
         >
           Закрыть
         </button>
+      )}
 
-        {/* <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center">
           <RenderTitle componentName={Title} />
-        </div> */}
+        </div>
 
         <div className="space-y-4">
           <RenderContent contentName={Content} onOpenNewModal={openNextModal} />
@@ -91,7 +94,9 @@ const ModalWindow = ({ Content, onClose}) => {
 
       {isNextModalOpen && (
         <ModalWindow
-          Content={nextModalRender}
+          Content={nextModalContent}
+          Title={nextModalTitle}
+          Screen={nextModalScreen}
           onClose={closeNextModal}
         />
       )}

@@ -27,7 +27,10 @@ const carsData = [
   }
 ];
 
-const ServiceHistory = () => {
+const ServiceHistory = ({ onOpenNewModal }) => {
+  const VisitContent = ["VisitContent"];
+  const VisitTitle = ["VisitTitle"];
+
   const [currentCarIndex, setCurrentCarIndex] = useState(0);
 
   const handleNextCar = () => {
@@ -105,9 +108,6 @@ const ServiceHistory = () => {
 
   const categorizedServices = classifyServices(currentCar.services);
 
-  const handleServiceClick = (service) => {
-    alert(`Детали услуги:\nДата: ${service.date}\nТип: ${service.type}\nДетали: ${service.details || 'Нет'}\nЦена: ${service.price}`);
-  };
 
   const formatDateRange = (startDate, endDate) => {
     const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
@@ -134,7 +134,7 @@ const ServiceHistory = () => {
         </button>
       </div>
       
-      <div className="max-h-96 flex-grow overflow-y-auto scrollbar-hide mb">
+      <div className="max-h-80 flex-grow overflow-y-auto scrollbar-hide mb">
         {Object.entries(categorizedServices).map(([category, services]) => (
           services.length > 0 && (
             <div key={category} className="mb-6">
@@ -148,7 +148,7 @@ const ServiceHistory = () => {
               {services.map((service, index) => (
                 <button
                   key={index}
-                  onClick={() => handleServiceClick(service)}
+                  onClick={() => onOpenNewModal(VisitContent, VisitTitle, "")}
                   className="bg-white rounded-2xl flex justify-between items-center p-4 mb-3 w-full shadow-xl hover:shadow-xl transition-shadow duration-300" // кнопки занимают всю ширину
                 >
                   <div className="w-full">

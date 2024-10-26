@@ -2,7 +2,7 @@ import React from 'react';
 import car from '../../images/car1.png';
 import save from '../../images/Save.png';
 
-const HistoryInfo = ({ onOpenNewModal }) => {
+const CarRedactionContent = ({ onOpenNewModal }) => {
   return (
     <div className='flex flex-col items-center'>
       <img src={car}></img>
@@ -52,4 +52,4 @@ const HistoryInfo = ({ onOpenNewModal }) => {
   );
 };
 
-export default HistoryInfo;
+export default CarRedactionContent;

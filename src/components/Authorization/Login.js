@@ -3,6 +3,8 @@ import carImage from '../../images/car.png';
 import logoImage from '../../images/logo.jpg'; 
 import { useNavigate } from 'react-router-dom';
 import thing from '../../images/hina.png';
+import TelegramBot from '../../api/autorizationApi';
+
 
 const RegistrationForm = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
@@ -23,6 +25,7 @@ const RegistrationForm = () => {
 
   return (
     <div className={`relative min-h-screen ${isDarkTheme ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} p-4 flex flex-col`}>
+      <TelegramBot />
       <div className="space-y-2 relative z-10 mb-5 text-left">
         <div className="flex justify-between items-center">
           <img src={logoImage} alt="15TH Logo" className="h-10 w-10 rounded-lg" />

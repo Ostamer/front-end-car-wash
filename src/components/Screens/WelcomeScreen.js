@@ -10,7 +10,7 @@ const WelcomeScreen = ({ onClose }) => (
       backgroundImage: `url(${carImage})`,
       backgroundSize: 'cover', 
       backgroundPosition: 'center',
-      height: '70%', 
+      height: '100%', 
       overflow: 'hidden' 
     }}
   >

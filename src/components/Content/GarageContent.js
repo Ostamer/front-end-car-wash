@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import history from '../../images/history.png';
 import Car from '../../images/car1.png';
-const buttonsForNextModal = ['CarInfo'];
+const carRedactionContent = ['CarRedactionContent'];
+const carRedactionTitle = ['CarRedactionTitle'];
 const carsData = [
   {
     id: 1,
@@ -76,7 +77,7 @@ const HistoryInfo = ({ onOpenNewModal }) => {
 
   const handleCarClick = (id) => {
     if (id === selectedCarId) {
-      onOpenNewModal(buttonsForNextModal);
+      onOpenNewModal(carRedactionContent, carRedactionTitle);
     } else {
       setSelectedCarId(id);
     }
@@ -104,7 +105,7 @@ const HistoryInfo = ({ onOpenNewModal }) => {
         </div>
         <button
           className="w-full bg-white text-black py-4 rounded-2xl text-lg flex items-center justify-center px-4 shadow-xl hover:shadow-2xl transition-shadow duration-300 mt-8" // Добавлен отступ сверху
-          onClick={() => onOpenNewModal(buttonsForNextModal)} 
+          onClick={() => onOpenNewModal(carRedactionContent,carRedactionTitle)} 
         >
           <div className="flex items-center">
             <img src={history} alt="history" className="w-6 h-6" />
