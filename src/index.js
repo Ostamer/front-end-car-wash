@@ -7,8 +7,6 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';   
 
 
-
-//
 const initializeTelegramSDK = async () => {
   try {
     console.log("Инициализация окружения Telegram");
@@ -72,5 +70,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-
